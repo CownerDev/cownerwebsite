@@ -1,23 +1,25 @@
-import logo from "./logo.svg";
-import "./App.css";
+import styles from "./AppStyles.js";
+import React from "react";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import Portfolio from "./Screens/Portfolio/Portfolio";
+import Dashboard from "./Screens/Dashboard/Dashboard";
 
-function App() {
+const AdminViews = () => {
+  const appStyles = styles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Cowner's</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={appStyles.App}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+          <Route path="/portfolio">
+            <Portfolio />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
-}
+};
 
-export default App;
+export default AdminViews;
